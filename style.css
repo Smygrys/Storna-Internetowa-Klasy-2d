@@ -1,8 +1,9 @@
+/* --- Ogólne ustawienia --- */
 body {
   background: #f5f7fa;
-  color: #222;
   font-family: "Segoe UI", Arial, sans-serif;
   margin: 0;
+  color: #222;
 }
 
 header {
@@ -12,9 +13,19 @@ header {
   text-align: center;
   background: #2563eb;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+.class-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* --- Switcher grup --- */
 .switcher {
   text-align: center;
   margin: 20px 0;
@@ -41,6 +52,7 @@ header {
   color: white;
 }
 
+/* --- Tabela planu lekcji --- */
 table {
   width: 95%;
   margin: 0 auto 30px auto;
@@ -67,7 +79,55 @@ tr:nth-child(even) td {
   background: #fafafa;
 }
 
-.hidden { display: none; }
+/* --- Kolory przedmiotów --- */
+.subject {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.subject-eob { background: #ffe4e1; }
+.subject-rel { background: #e0f7fa; }
+.subject-infor { background: #fff3e0; }
+.subject-progra { background: #e8f5e9; }
+.subject-wf { background: #f3e5f5; }
+.subject-chem { background: #fff9c4; }
+.subject-hist { background: #d1c4e9; }
+.subject-geog { background: #b2ebf2; }
+.subject-ang { background: #ffccbc; }
+.subject-math { background: #c8e6c9; }
+.subject-biz { background: #ffe0b2; }
+.subject-pol { background: #f8bbd0; }
+.subject-phys { background: #b3e5fc; }
+.subject-db { background: #d7ccc8; }
+.subject-ger { background: #c5cae9; }
+
+/* --- Ikona sali obok nauczyciela --- */
+.subject.room::before {
+  content: "🏫";
+  margin-right: 4px;
+}
+
+/* --- Podświetlenie aktualnej lekcji --- */
+.current-lesson {
+  background-color: #ffe082 !important;
+  transition: background 0.3s;
+}
+
+.current-lesson td.time::after {
+  content: " ⏰ kończy się o " attr(data-end);
+  font-weight: bold;
+  color: #d84315;
+  margin-left: 4px;
+}
+
+/* --- Ukrywanie grup --- */
+.gr1 { display: inline; }
+.gr2 { display: none; }
+
+.gr2-active .gr1 { display: none; }
+.gr2-active .gr2 { display: inline; }
 
 footer {
   text-align: center;
