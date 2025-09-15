@@ -1,158 +1,184 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>2D – programiści</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Plan lekcji 2D – programiści</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Strona internetowa Klasy 2D – programiści w roku szkolnym 2025/2026.">
+<meta name="author" content="Smygrys">
+<link rel="icon" href="icon.png">
+
 </head>
 <body>
 
-  <header>
-    📅 Strona internetowa klasy 2D – programiści
-  </header>
+<header>
+  <img src="icon.png" alt="Ikona klasy 2D" class="class-icon">
+  📅 Plan lekcji klasy 2D – programiści
+</header>
 
-  <div class="switcher">
-    <button id="btn-gr1" class="active">Grupa 1</button>
-    <button id="btn-gr2">Grupa 2</button>
-    <button id="btn-print">🖨️ Drukuj</button>
-  </div>
+<div class="switcher">
+  <button id="btn-gr1" class="active">Grupa 1</button>
+  <button id="btn-gr2">Grupa 2</button>
+  <button id="btn-print">🖨️ Drukuj</button>
+</div>
 
-  <table>
-    <tr>
-      <th>Nr</th>
-      <th>Godz.</th>
-      <th>Poniedziałek</th>
-      <th>Wtorek</th>
-      <th>Środa</th>
-      <th>Czwartek</th>
-      <th>Piątek</th>
-    </tr>
+<table>
+<tr>
+<th>Nr</th>
+<th>Godz.</th>
+<th>Poniedziałek</th>
+<th>Wtorek</th>
+<th>Środa</th>
+<th>Czwartek</th>
+<th>Piątek</th>
+</tr>
 
-    <tr>
-      <td>1</td><td>7:00–7:45</td><td></td><td></td><td></td><td></td><td></td>
-    </tr>
+<tr>
+<td>1</td>
+<td class="time" data-start="07:00" data-end="07:45">7:00–7:45</td>
+<td></td><td></td><td></td><td></td><td></td>
+</tr>
 
-    <tr>
-      <td>2</td><td>7:50–8:35</td>
-      <td></td><td></td><td>e_obywatel – EG (45)</td><td>religia – TJ (12)</td><td></td>
-    </tr>
+<tr>
+<td>2</td>
+<td class="time" data-start="07:50" data-end="08:35">7:50–8:35</td>
+<td></td>
+<td></td>
+<td><span class="subject subject-eob room">e_obywatel – EG (45)</span></td>
+<td><span class="subject subject-rel room">religia – TJ (12)</span></td>
+<td></td>
+</tr>
 
-    <tr>
-      <td>3</td><td>8:40–9:25</td>
-      <td></td><td></td><td>podst.infor – KM (40)</td><td>geografia – AH (4)</td><td></td>
-    </tr>
+<tr>
+<td>3</td>
+<td class="time" data-start="08:40" data-end="09:25">8:40–9:25</td>
+<td></td>
+<td></td>
+<td><span class="subject subject-infor room">podst.infor – KM (40)</span></td>
+<td><span class="subject subject-geog room">geografia – AH (4)</span></td>
+<td></td>
+</tr>
 
-    <tr>
-      <td>4</td><td>9:30–10:15</td>
-      <td></td><td>chemia – ŚW (52)</td><td>podst.progra – KMA (43)</td><td>bizn.i zarz. – KG (14)</td><td></td>
-    </tr>
+<tr>
+<td>4</td>
+<td class="time" data-start="09:30" data-end="10:15">9:30–10:15</td>
+<td></td>
+<td><span class="subject subject-chem room">chemia – ŚW (52)</span></td>
+<td><span class="subject subject-progra room">podst.progra – K. Maj (43)</span></td>
+<td><span class="subject subject-biz room">bizn.i zarz. – KG (14)</span></td>
+<td></td>
+</tr>
 
-    <tr>
-      <td>5</td><td>10:30–11:15</td>
-      <td></td><td>historia – KK (44)</td><td>podst.progra – KMA (45)</td><td>matematyka – KD (11)</td>
-      <td><span class="gr2">informatyka – DD (6)</span></td>
-    </tr>
+<tr>
+<td>5</td>
+<td class="time" data-start="10:30" data-end="11:15">10:30–11:15</td>
+<td></td>
+<td><span class="subject subject-hist room">historia – KK (44)</span></td>
+<td><span class="subject subject-progra room">podst.progra – K. Maj (45)</span></td>
+<td><span class="subject subject-math room">matematyka – KD (11)</span></td>
+<td><span class="gr2 subject subject-infor room">informatyka – DD (6)</span></td>
+</tr>
 
-    <tr>
-      <td>6</td><td>11:20–12:05</td>
-      <td><span class="gr2">prac.baz.dan – RC (39)</span></td><td>r_matematyka – KD (43)</td>
-      <td>
-        <span class="gr1">j.niemiecki – EK (33)</span><br>
-        <span class="gr2">j.niemiecki – DE (38)</span>
-      </td>
-      <td>matematyka – KD (11)</td><td>j.polski – KR (46)</td>
-    </tr>
+<tr>
+<td>6</td>
+<td class="time" data-start="11:20" data-end="12:05">11:20–12:05</td>
+<td><span class="gr2 subject subject-db room">prac.baz.dan – RC (39)</span></td>
+<td><span class="subject subject-math room">r_matematyka – KD (43)</span></td>
+<td>
+<span class="gr1 subject subject-ger room">j.niemiecki – EK (33)</span><br>
+<span class="gr2 subject subject-ger room">j.niemiecki – DE (38)</span>
+</td>
+<td><span class="subject subject-math room">matematyka – KD (11)</span></td>
+<td><span class="subject subject-pol room">j.polski – KR (46)</span></td>
+</tr>
 
-    <tr>
-      <td>7</td><td>12:10–12:55</td>
-      <td><span class="gr2">prac.baz.dan – RC (39)</span></td><td>fizyka – JW (41)</td><td>j.polski – KR (46)</td>
-      <td>
-        <span class="gr1">j.niemiecki – EK (107)</span><br>
-        <span class="gr2">j.niemiecki – DE (38)</span>
-      </td>
-      <td>
-        <span class="gr1">WF – MB (sg1)</span><br>
-        <span class="gr2">WF – MM (sg2)</span>
-      </td>
-    </tr>
+<tr>
+<td>7</td>
+<td class="time" data-start="12:10" data-end="12:55">12:10–12:55</td>
+<td><span class="gr2 subject subject-db room">prac.baz.dan – RC (39)</span></td>
+<td><span class="subject subject-phys room">fizyka – JW (41)</span></td>
+<td><span class="subject subject-pol room">j.polski – KR (46)</span></td>
+<td>
+<span class="gr1 subject subject-ger room">j.niemiecki – EK (107)</span><br>
+<span class="gr2 subject subject-ger room">j.niemiecki – DE (38)</span>
+</td>
+<td>
+<span class="gr1 subject subject-wf room">WF – MB (sg1)</span><br>
+<span class="gr2 subject subject-wf room">WF – MM (sg2)</span>
+</td>
+</tr>
 
-    <tr>
-      <td>8</td><td>13:15–14:00</td>
-      <td>
-        <span class="gr1">informatyka – DR (38)</span><br>
-        <span class="gr2">prac.baz.dan – RC (39)</span>
-      </td>
-      <td>
-        <span class="gr1">r_j.ang – HM (30)</span><br>
-        <span class="gr2">r_j.ang – JP (39)</span>
-      </td>
-      <td>j.polski – KR (46)</td>
-      <td>str.apk.int – WJ (7)</td>
-      <td>
-        <span class="gr1">WF – MB (sg1)</span><br>
-        <span class="gr2">WF – MM (sg2)</span>
-      </td>
-    </tr>
+<tr>
+<td>8</td>
+<td class="time" data-start="13:15" data-end="14:00">13:15–14:00</td>
+<td><span class="gr1 subject subject-infor room">informatyka – DR (38)</span><br>
+<span class="gr2 subject subject-db room">prac.baz.dan – RC (39)</span></td>
+<td><span class="gr1 subject subject-ang room">r_j.ang – HM (30)</span><br>
+<span class="gr2 subject subject-ang room">r_j.ang – JP (39)</span></td>
+<td><span class="subject subject-pol room">j.polski – KR (46)</span></td>
+<td><span class="subject subject-progra room">str.apk.int – WJ (7)</span></td>
+<td><span class="gr1 subject subject-wf room">WF – MB (sg1)</span><br>
+<span class="gr2 subject subject-wf room">WF – MM (sg2)</span></td>
+</tr>
 
-    <tr>
-      <td>9</td><td>14:05–14:50</td>
-      <td>
-        <span class="gr1">pra.str.apk – WJ (39)</span><br>
-        <span class="gr2">pra.str.apk – SR (38)</span>
-      </td>
-      <td>podst.infor – KM (11)</td>
-      <td>
-        <span class="gr1">j.ang – HM (29)</span><br>
-        <span class="gr2">j.ang – JP (27)</span>
-      </td>
-      <td><span class="gr1">prac.baz.dan – KJ (15)</span></td>
-      <td>
-        <span class="gr1">WF – MB (sg1)</span><br>
-        <span class="gr2">WF – MM (sg2)</span>
-      </td>
-    </tr>
+<tr>
+<td>9</td>
+<td class="time" data-start="14:05" data-end="14:50">14:05–14:50</td>
+<td><span class="gr1 subject subject-progra room">pra.str.apk – WJ (39)</span><br>
+<span class="gr2 subject subject-progra room">pra.str.apk – SR (38)</span></td>
+<td><span class="subject subject-infor room">podst.infor – KM (11)</span></td>
+<td><span class="gr1 subject subject-ang room">j.ang – HM (29)</span><br>
+<span class="gr2 subject subject-ang room">j.ang – JP (27)</span></td>
+<td><span class="gr1 subject subject-progra room">prac.baz.dan – KJ (15)</span></td>
+<td><span class="gr1 subject subject-wf room">WF – MB (sg1)</span><br>
+<span class="gr2 subject subject-wf room">WF – MM (sg2)</span></td>
+</tr>
 
-    <tr>
-      <td>10</td><td>14:55–15:40</td>
-      <td>
-        <span class="gr1">pra.str.apk – WJ (39)</span><br>
-        <span class="gr2">pra.str.apk – SR (38)</span>
-      </td>
-      <td>bizn.i zarz. – KG (13)</td>
-      <td>
-        <span class="gr1">j.ang – HM (29)</span><br>
-        <span class="gr2">j.ang – JP (27)</span>
-      </td>
-      <td><span class="gr1">prac.baz.dan – KJ (39)</span></td>
-      <td>str.apk.int – WJ (45)</td>
-    </tr>
+<tr>
+<td>10</td>
+<td class="time" data-start="14:55" data-end="15:40">14:55–15:40</td>
+<td><span class="gr1 subject subject-progra room">pra.str.apk – WJ (39)</span><br>
+<span class="gr2 subject subject-progra room">pra.str.apk – SR (38)</span></td>
+<td><span class="subject subject-biz room">bizn.i zarz. – KG (13)</span></td>
+<td><span class="gr1 subject subject-ang room">j.ang – HM (29)</span><br>
+<span class="gr2 subject subject-ang room">j.ang – JP (27)</span></td>
+<td><span class="gr1 subject subject-progra room">prac.baz.dan – KJ (39)</span></td>
+<td><span class="subject subject-progra room">str.apk.int – WJ (45)</span></td>
+</tr>
 
-    <tr>
-      <td>11</td><td>15:45–16:30</td>
-      <td>
-        <span class="gr1">pra.str.apk – WJ (39)</span><br>
-        <span class="gr2">pra.str.apk – SR (6)</span>
-      </td>
-      <td></td><td></td><td><span class="gr1">prac.baz.dan – KJ (15)</span></td>
-      <td>historia – KK (44)</td>
-    </tr>
+<tr>
+<td>11</td>
+<td class="time" data-start="15:45" data-end="16:30">15:45–16:30</td>
+<td><span class="gr1 subject subject-progra room">pra.str.apk – WJ (39)</span><br>
+<span class="gr2 subject subject-progra room">pra.str.apk – SR (6)</span></td>
+<td></td><td></td>
+<td><span class="gr1 subject subject-progra room">prac.baz.dan – KJ (15)</span></td>
+<td><span class="subject subject-hist room">historia – KK (44)</span></td>
+</tr>
 
-    <tr>
-      <td>12</td><td>16:35–17:20</td>
-      <td>fizyka – JW (51)</td><td></td><td></td><td></td><td>godz.wych – KK (44)</td>
-    </tr>
+<tr>
+<td>12</td>
+<td class="time" data-start="16:35" data-end="17:20">16:35–17:20</td>
+<td><span class="subject subject-phys room">fizyka – JW (51)</span></td>
+<td></td><td></td><td></td>
+<td><span class="subject subject-hist room">godz.wych – KK (44)</span></td>
+</tr>
 
-    <tr>
-      <td>13</td><td>17:25–18:10</td>
-      <td>syst.bd – PP (52)</td><td></td><td></td><td></td><td></td>
-    </tr>
+<tr>
+<td>13</td>
+<td class="time" data-start="17:25" data-end="18:10">17:25–18:10</td>
+<td><span class="subject subject-db room">syst.bd – PP (52)</span></td>
+<td></td><td></td><td></td>
+<td></td>
+</tr>
 
-  </table>
+</table>
 
-  <footer>
-    📌 Obowiązuje od: 15 września 2025
-  </footer>
+<footer>
+📌 Obowiązuje od: 15 września 2025
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
