@@ -22,6 +22,37 @@ function highlightCurrentLesson() {
 
 highlightCurrentLesson();
 setInterval(highlightCurrentLesson, 30000);
+function updateClock() {
+  const now = new Date();
+  
+  const days = ["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"];
+  const months = ["stycznia","lutego","marca","kwietnia","maja","czerwca",
+                  "lipca","sierpnia","września","października","listopada","grudnia"];
+  
+  const dayName = days[now.getDay()];
+  const day = now.getDate();
+  const month = months[now.getMonth()];
+  const year = now.getFullYear();
+  
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+  
+  // dodaj zero przed cyframi <10
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  
+  const timeStr = `${hours}:${minutes}:${seconds}`;
+  const dateStr = `${dayName}, ${day} ${month} ${year}`;
+  
+  document.getElementById("clock").textContent = `${dateStr} ⏰ ${timeStr}`;
+}
+
+// pierwsze wywołanie
+updateClock();
+// aktualizacja co sekundę
+setInterval(updateClock, 1000);
 
 // --- Przełączanie grup ---
 document.getElementById("btn-gr1").addEventListener("click", () => {
@@ -41,32 +72,3 @@ document.getElementById("btn-print").addEventListener("click", () => {
   window.print();
 });
 
-function updateClock() {
-  const now = new Date();
-  
-  const days = ["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"];
-  const months = ["stycznia","lutego","marca","kwietnia","maja","czerwca","lipca","sierpnia","września","października","listopada","grudnia"];
-  
-  const dayName = days[now.getDay()];
-  const day = now.getDate();
-  const month = months[now.getMonth()];
-  const year = now.getFullYear();
-  
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  let seconds = now.getSeconds();
-  
-  // dodaj zero przed cyframi <10
-  hours = hours < 10 ? "0"+hours : hours;
-  minutes = minutes < 10 ? "0"+minutes : minutes;
-  seconds = seconds < 10 ? "0"+seconds : seconds;
-  
-  const timeStr = `${hours}:${minutes}:${seconds}`;
-  const dateStr = `${dayName}, ${day} ${month} ${year}`;
-  
-  document.getElementById("clock").textContent = `${dateStr} ⏰ ${timeStr}`;
-}
-
-// aktualizacja co sekundę
-updateClock();
-setInterval(updateClock, 1000);
