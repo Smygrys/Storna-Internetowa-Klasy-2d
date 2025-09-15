@@ -1,27 +1,42 @@
-const btnGr1 = document.getElementById("btn-gr1");
-const btnGr2 = document.getElementById("btn-gr2");
-const btnPrint = document.getElementById("btn-print");
+// --- Podświetlanie aktualnej lekcji ---
+function highlightCurrentLesson() {
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
 
-const gr1 = document.querySelectorAll(".gr1");
-const gr2 = document.querySelectorAll(".gr2");
+  document.querySelectorAll("td.time").forEach(cell => {
+    const [startH, startM] = cell.dataset.start.split(":").map(Number);
+    const [endH, endM] = cell.dataset.end.split(":").map(Number);
 
-function showGroup(group) {
-  if(group === 1) {
-    gr1.forEach(el => el.classList.remove("hidden"));
-    gr2.forEach(el => el.classList.add("hidden"));
-    btnGr1.classList.add("active");
-    btnGr2.classList.remove("active");
-  } else {
-    gr2.forEach(el => el.classList.remove("hidden"));
-    gr1.forEach(el => el.classList.add("hidden"));
-    btnGr2.classList.add("active");
-    btnGr1.classList.remove("active");
-  }
+    const startTime = startH * 60 + startM;
+    const endTime = endH * 60 + endM;
+    const currentTime = currentHour * 60 + currentMinute;
+
+    if(currentTime >= startTime && currentTime <= endTime){
+      cell.parentElement.classList.add("current-lesson");
+    } else {
+      cell.parentElement.classList.remove("current-lesson");
+    }
+  });
 }
 
-btnGr1.addEventListener("click", () => showGroup(1));
-btnGr2.addEventListener("click", () => showGroup(2));
-btnPrint.addEventListener("click", () => window.print());
+highlightCurrentLesson();
+setInterval(highlightCurrentLesson, 30000);
 
-// Domyślnie pokazujemy Grupę 1
-showGroup(1);
+// --- Przełączanie grup ---
+document.getElementById("btn-gr1").addEventListener("click", () => {
+  document.body.classList.remove("gr2-active");
+  document.getElementById("btn-gr1").classList.add("active");
+  document.getElementById("btn-gr2").classList.remove("active");
+});
+
+document.getElementById("btn-gr2").addEventListener("click", () => {
+  document.body.classList.add("gr2-active");
+  document.getElementById("btn-gr2").classList.add("active");
+  document.getElementById("btn-gr1").classList.remove("active");
+});
+
+// --- Drukowanie ---
+document.getElementById("btn-print").addEventListener("click", () => {
+  window.print();
+});
