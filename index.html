@@ -10,6 +10,154 @@
 <link rel="icon" href="ico.png">
 
 </head>
+<style>
+/* --- Reset i ogólne --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f7fa;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Header --- */
+header {
+  background: #2563eb;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px 10px;
+  gap: 10px;
+}
+
+header img.class-icon {
+  width: 80px;
+  height: 80px;
+}
+
+/* --- Clock --- */
+#clock {
+  font-size: 16px;
+}
+
+/* --- Switcher grup --- */
+.switcher {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.switcher button {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.switcher button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #1d4ed8;
+}
+
+/* --- Tabela --- */
+table {
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+/* --- Przedmioty --- */
+.subject {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.subject.room::before {
+  content: "🏫";
+  margin-right: 3px;
+}
+
+/* --- Grupy --- */
+.gr1 { display: inline; }
+.gr2 { display: none; }
+.gr2-active .gr1 { display: none; }
+.gr2-active .gr2 { display: inline; }
+
+/* --- Podświetlenie aktualnej lekcji --- */
+.current-lesson {
+  background-color: #ffe082 !important;
+}
+
+/* --- Footer --- */
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: auto;
+  font-size: 14px;
+}
+
+footer a {
+  color: #4fc3f7;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsywność --- */
+@media (max-width: 768px) {
+  table, th, td {
+    font-size: 12px;
+  }
+  header {
+    padding: 10px 5px;
+  }
+  .switcher button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+</style>
+
 <body>
 
 <header>
@@ -173,6 +321,7 @@
 <div class="switcher">
   <button id="btn-gr1" class="active">Grupa 1</button>
   <button id="btn-gr2">Grupa 2</button>
+  <button id="btn-theme">🌓 Zmień motyw</button>
   <button id="btn-print">🖨️ Drukuj</button>
 </div>
 
