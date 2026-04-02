@@ -1,342 +1,466 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-<meta charset="UTF-8">
-<title>Plan lekcji 2D – programiści</title>
-<link rel="stylesheet" href="style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Strona internetowa Klasy 2D – programiści w roku szkolnym 2025/2026.">
-<meta name="author" content="Smygrys">
-<link rel="icon" href="ico.png">
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Smygrys - Beginner Developer | Building Websites, Apps & Games. Portfolio showcasing web development, app ideas, and game projects."
+    />
+    <meta
+      name="keywords"
+      content="Smygrys, developer, web development, portfolio, HTML, CSS, JavaScript, Lua, C++, SQL, Poland"
+    />
+    <meta name="author" content="Smygrys" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Smygrys | Developer Portfolio" />
+    <meta
+      property="og:description"
+      content="Beginner Developer | Building Websites, Apps & Games"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://smygrys.dev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@Smygrys" />
+    <title>Smygrys | Developer Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Background Particles -->
+    <div class="bg-particles" id="particles"></div>
 
-</head>
-<style>
-/* --- Reset i ogólne --- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo">&lt;Smygrys/&gt;</a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              aria-label="Toggle theme"
+            >
+              <i class="fas fa-sun"></i>
+            </button>
+          </li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
 
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f5f7fa;
-  color: #222;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-bg-gradient"></div>
+      <div class="hero-content">
+        <div class="hero-avatar">
+          <img src="img/pfp.jpg" alt="Smygrys avatar" />
+        </div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Available for projects
+        </div>
+        <h1>Hi, I'm <span class="gradient-name">Smygrys</span></h1>
+        <div class="typing-wrapper">
+          <span class="typing-text" id="typingText"></span
+          ><span class="typing-cursor"></span>
+        </div>
+        <p class="hero-description">
+          A beginner developer from Poland who enjoys building websites, apps,
+          and experimenting with games. Always learning, always building.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary"
+            ><i class="fas fa-rocket"></i> View Projects</a
+          >
+          <!-- <a href="#contact" class="btn btn-secondary"
+            ><i class="fas fa-envelope"></i> Get in Touch</a
+          > -->
+        </div>
+        <div class="hero-socials">
+          <a
+            href="https://github.com/Smygrys"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="https://x.com/Smygrys"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter/X"
+            ><i class="fab fa-x-twitter"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/smygrys.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@smygrys"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
 
-/* --- Header --- */
-header {
-  background: #2563eb;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 15px 10px;
-  gap: 10px;
-}
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="section-container">
+        <div class="section-header fade-in">
+          <span class="section-subtitle">Get to Know Me</span>
+          <h2 class="section-title">About Me</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+          <div class="about-image-wrapper fade-in-left">
+            <div class="about-image-card">
+              <img src="img/pfp.jpg" alt="Smygrys profile" />
+              <div class="about-stats">
+                <div class="about-stat">
+                  <div class="number">6+</div>
+                  <div class="label">Devices</div>
+                </div>
+                <div class="about-stat">
+                  <div class="number">1+</div>
+                  <div class="label">Projects</div>
+                </div>
+                <div class="about-stat">
+                  <!-- <div class="number">∞</div> -->
+                  <div class="number">0</div>
+                  <div class="label">Motivation</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-content fade-in-right">
+            <h3><span>Beginner Developer</span></h3>
+            <p>
+              Hi, I'm Smygrys — a beginner developer who enjoys building
+              websites, apps, and experimenting with games. I started with HTML,
+              CSS, and Lua, and now I'm learning C++, JavaScript, and SQL.
+            </p>
+            <p>
+              I like opierdalać się, wkurwiać others, and creating things that
+              never work. I'm also interested in AI and want to explore it more
+              in the future. I'm currently learning through online resources and
+              building small projects.
+            </p>
+            <div class="about-info">
+              <div class="about-info-item">
+                <i class="fas fa-user"></i>
+                <div class="info-text">
+                  <span class="info-label">Name</span>
+                  <span class="info-value">Smygrys</span>
+                </div>
+              </div>
+              <div class="about-info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="info-text">
+                  <span class="info-label">Location</span>
+                  <span class="info-value">Poland / Nowy Sącz</span>
+                </div>
+              </div>
+              <div class="about-info-item">
+                <i class="fas fa-envelope"></i>
+                <div class="info-text">
+                  <span class="info-label">Email</span>
+                  <span class="info-value">smygrysb@gmail.com</span>
+                </div>
+              </div>
+              <div class="about-info-item">
+                <i class="fas fa-graduation-cap"></i>
+                <div class="info-text">
+                  <span class="info-label">Education</span>
+                  <span class="info-value">Self-taught</span>
+                </div>
+              </div>
+            </div>
+            <a href="#contact" class="btn btn-primary"
+              ><i class="fas fa-paper-plane"></i> Let's Connect</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
 
-header img.class-icon {
-  width: 80px;
-  height: 80px;
-}
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+      <div class="section-container">
+        <div class="section-header fade-in">
+          <span class="section-subtitle">What I Know</span>
+          <h2 class="section-title">Skills & Technologies</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card fade-in" data-delay="0">
+            <div class="skill-header">
+              <div class="skill-info">
+                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                <span class="skill-name">HTML / CSS</span>
+              </div>
+              <span class="skill-percentage">67%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="70"></div>
+            </div>
+          </div>
 
-/* --- Clock --- */
-#clock {
-  font-size: 16px;
-}
+          <div class="skill-card fade-in" data-delay="500">
+            <div class="skill-header">
+              <div class="skill-info">
+                <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                <span class="skill-name">Git & GitHub</span>
+              </div>
+              <span class="skill-percentage">65%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="65"></div>
+            </div>
+          </div>
 
-/* --- Switcher grup --- */
-.switcher {
-  text-align: center;
-  margin: 15px 0;
-}
+          <div class="skill-card fade-in" data-delay="400">
+            <div class="skill-header">
+              <div class="skill-info">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <span class="skill-name">SQL</span>
+              </div>
+              <span class="skill-percentage">40%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="40"></div>
+            </div>
+          </div>
 
-.switcher button {
-  background: white;
-  border: 1px solid #ccc;
-  padding: 8px 14px;
-  margin: 0 5px;
-  cursor: pointer;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: 0.2s;
-}
+          <div class="skill-card fade-in" data-delay="200">
+            <div class="skill-header">
+              <div class="skill-info">
+                <div class="skill-icon"><i class="fab fa-js-square"></i></div>
+                <span class="skill-name">JavaScript</span>
+              </div>
+              <span class="skill-percentage">20%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="20"></div>
+            </div>
+          </div>
 
-.switcher button.active {
-  background: #2563eb;
-  color: white;
-  border-color: #1d4ed8;
-}
+          <div class="skill-card fade-in" data-delay="300">
+            <div class="skill-header">
+              <div class="skill-info">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <span class="skill-name">C++</span>
+              </div>
+              <span class="skill-percentage">10%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* --- Tabela --- */
-table {
-  width: 95%;
-  max-width: 1000px;
-  margin: 0 auto 20px auto;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <div class="section-container">
+        <div class="section-header fade-in">
+          <span class="section-subtitle">My Work</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card fade-in" data-delay="0">
+            <div class="project-image">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="project-content">
+              <span class="project-tag">In work</span>
+              <h3>Obywatelek Project</h3>
+              <p>Working mObywatel app Polsih Version.</p>
+              <div class="project-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="#"><i class="fab fa-github"></i> Code</a>
+                <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="project-card fade-in" data-delay="150">
+            <div class="project-image">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Upcoming</span>
+              <h3>Maybe in future</h3>
+              <p>
+                Planning to opierdalac sie and just pray that i will do
+                anything...(probably not).
+              </p>
+              <div class="project-tech">
+                <span>I</span>
+                <span>just</span>
+                <span>opierdalac</span>
+                <span>sie</span>
+              </div>
+              <div class="project-links">
+                <a href="#"><i class="fab fa-github"></i> Code</a>
+                <a href="#"
+                  ><i class="fas fa-external-link-alt"></i> Coming Soon</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card fade-in" data-delay="300">
+            <div class="project-image">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Live</span>
+              <h3>Portfolio Website</h3>
+              <p>Yee i will never do it sry.</p>
+              <div class="project-tech">
+                <span>Never</span>
+                <span>Completed</span>
+                <span>this</span>
+                <span>Shit</span>
+              </div>
+              <div class="project-links">
+                <a href="#"><i class="fab fa-github"></i> Code</a>
+                <a href="#home"
+                  ><i class="fas fa-external-link-alt"></i> Live</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 6px 8px;
-  text-align: center;
-  font-size: 14px;
-}
+    <!-- Currently Learning Section -->
+    <section class="learning" id="learning">
+      <div class="section-container">
+        <div class="section-header fade-in">
+          <span class="section-subtitle">Always Growing</span>
+          <h2 class="section-title">Currently Learning</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="learning-grid">
+          <div class="learning-card fade-in-left">
+            <h3><i class="fas fa-book-open"></i> Currently Learning</h3>
+            <ul class="learning-list">
+              <li>
+                <i class="fab fa-js"></i> Advanced JavaScript & DOM manipulation
+              </li>
+              <li>
+                <i class="fas fa-code"></i> C++ fundamentals & OOP concepts
+              </li>
+              <li>
+                <i class="fas fa-database"></i> SQL queries & database
+                management
+              </li>
+              <li><i class="fab fa-react"></i> React.js basics</li>
+              <li>
+                <i class="fas fa-terminal"></i> Command line & developer tools
+              </li>
+            </ul>
+          </div>
+          <div class="learning-card fade-in-right">
+            <h3><i class="fas fa-compass"></i> Interests & Goals</h3>
+            <ul class="learning-list">
+              <li>
+                <i class="fas fa-robot"></i> Artificial Intelligence & Machine
+                Learning
+              </li>
+              <li><i class="fas fa-gamepad"></i> Game development & design</li>
+              <li><i class="fas fa-mobile-alt"></i> Mobile app development</li>
+              <li><i class="fas fa-shield-alt"></i> Cybersecurity basics</li>
+              <li><i class="fas fa-users"></i> Open source contributing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-th {
-  background: #f1f5f9;
-  font-weight: 600;
-}
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo">&lt;Smygrys/&gt;</div>
+          <div class="footer-socials">
+            <a
+              href="https://github.com/Smygrys"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://x.com/Smygrys"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter/X"
+              ><i class="fab fa-x-twitter"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/smygrys.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/@smygrys"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 <a href="#home">Smygrys</a>.</p>
+        </div>
+      </div>
+    </footer>
 
-tr:nth-child(even) td {
-  background: #fafafa;
-}
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
-/* --- Przedmioty --- */
-.subject {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 5px;
-}
-
-.subject.room::before {
-  content: "🏫";
-  margin-right: 3px;
-}
-
-/* --- Grupy --- */
-.gr1 { display: inline; }
-.gr2 { display: none; }
-.gr2-active .gr1 { display: none; }
-.gr2-active .gr2 { display: inline; }
-
-/* --- Podświetlenie aktualnej lekcji --- */
-.current-lesson {
-  background-color: #ffe082 !important;
-}
-
-/* --- Footer --- */
-footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 15px 10px;
-  margin-top: auto;
-  font-size: 14px;
-}
-
-footer a {
-  color: #4fc3f7;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* --- Responsywność --- */
-@media (max-width: 768px) {
-  table, th, td {
-    font-size: 12px;
-  }
-  header {
-    padding: 10px 5px;
-  }
-  .switcher button {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-}
-</style>
-
-<body>
-
-<header>
-  <img src="ico.png" alt="Ikona klasy 2D" class="class-icon">
-  🛠️ Plan lekcji klasy 2D – programiści 
-  <div id="clock" style="margin-left: 20px; font-size: 16px;"></div>
-</header>
-
-<table>
-<tr>
-<th>Nr</th>
-<th>Godz.</th>
-<th>Poniedziałek</th>
-<th>Wtorek</th>
-<th>Środa</th>
-<th>Czwartek</th>
-<th>Piątek</th>
-</tr>
-
-<tr>
-<td>1</td>
-<td class="time" data-start="07:00" data-end="07:45">7:00–7:45</td>
-<td></td><td></td><td></td><td></td><td></td>
-</tr>
-
-<tr>
-<td>2</td>
-<td class="time" data-start="07:50" data-end="08:35">7:50–8:35</td>
-<td></td>
-<td></td>
-<td><span class="subject subject-eob room">e_obywatel – EG (45)</span></td>
-<td><span class="subject subject-rel room">religia – TJ (12)</span></td>
-<td></td>
-</tr>
-
-<tr>
-<td>3</td>
-<td class="time" data-start="08:40" data-end="09:25">8:40–9:25</td>
-<td></td>
-<td></td>
-<td><span class="subject subject-infor room">podst.infor – KM (40)</span></td>
-<td><span class="subject subject-geog room">geografia – AH (4)</span></td>
-<td></td>
-</tr>
-
-<tr>
-<td>4</td>
-<td class="time" data-start="09:30" data-end="10:15">9:30–10:15</td>
-<td></td>
-<td><span class="subject subject-chem room">chemia – ŚW (52)</span></td>
-<td><span class="subject subject-progra room">podst.progra – K. Maj (43)</span></td>
-<td><span class="subject subject-biz room">bizn.i zarz. – KG (14)</span></td>
-<td></td>
-</tr>
-
-<tr>
-<td>5</td>
-<td class="time" data-start="10:30" data-end="11:15">10:30–11:15</td>
-<td></td>
-<td><span class="subject subject-hist room">historia – KK (44)</span></td>
-<td><span class="subject subject-progra room">podst.progra – K. Maj (45)</span></td>
-<td><span class="subject subject-math room">matematyka – KD (11)</span></td>
-<td><span class="gr2 subject subject-infor room">informatyka – DD (6)</span></td>
-</tr>
-
-<tr>
-<td>6</td>
-<td class="time" data-start="11:20" data-end="12:05">11:20–12:05</td>
-<td><span class="gr2 subject subject-db room">prac.baz.dan – RC (39)</span></td>
-<td><span class="subject subject-math room">r_matematyka – KD (43)</span></td>
-<td>
-<span class="gr1 subject subject-ger room">j.niemiecki – EK (Sj7)</span><br>
-<span class="gr2 subject subject-ger room">j.niemiecki – DE (38)</span>
-</td>
-<td><span class="subject subject-math room">matematyka – KD (11)</span></td>
-<td><span class="subject subject-pol room">j.polski – KR (46)</span></td>
-</tr>
-
-<tr>
-<td>7</td>
-<td class="time" data-start="12:10" data-end="12:55">12:10–12:55</td>
-<td><span class="gr2 subject subject-db room">prac.baz.dan – RC (39)</span></td>
-<td><span class="subject subject-phys room">fizyka – JW (41)</span></td>
-<td><span class="subject subject-pol room">j.polski – KR (46)</span></td>
-<td>
-<span class="gr1 subject subject-ger room">j.niemiecki – EK (107)</span><br>
-<span class="gr2 subject subject-ger room">j.niemiecki – DE (38)</span>
-</td>
-<td>
-<span class="gr1 subject subject-wf room">WF – MB (sg1)</span><br>
-<span class="gr2 subject subject-wf room">WF – MM (sg2)</span>
-</td>
-</tr>
-
-<tr>
-<td>8</td>
-<td class="time" data-start="13:15" data-end="14:00">13:15–14:00</td>
-<td><span class="gr1 subject subject-infor room">informatyka – DR (38)</span><br>
-<span class="gr2 subject subject-db room">prac.baz.dan – RC (39)</span></td>
-<td><span class="gr1 subject subject-ang room">r_j.ang – HM (sj4)</span><br>
-<span class="gr2 subject subject-ang room">r_j.ang – JP (Pe3)</span></td>
-<td><span class="subject subject-pol room">j.polski – KR (46)</span></td>
-<td><span class="subject subject-progra room">str.apk.int – WJ (7)</span></td>
-<td><span class="gr1 subject subject-wf room">WF – MB (sg1)</span><br>
-<span class="gr2 subject subject-wf room">WF – MM (sg2)</span></td>
-</tr>
-
-<tr>
-<td>9</td>
-<td class="time" data-start="14:05" data-end="14:50">14:05–14:50</td>
-<td><span class="gr1 subject subject-progra room">pra.str.apk – WJ (39)</span><br>
-<span class="gr2 subject subject-progra room">pra.str.apk – SR (38)</span></td>
-<td><span class="subject subject-infor room">podst.infor – KM (11)</span></td>
-<td><span class="gr1 subject subject-ang room">j.ang – HM (sj3)</span><br>
-<span class="gr2 subject subject-ang room">j.ang – JP (sj1)</span></td>
-<td><span class="gr1 subject subject-progra room">prac.baz.dan – KJ (15)</span></td>
-<td><span class="gr1 subject subject-wf room">WF – MB (sg1)</span><br>
-<span class="gr2 subject subject-wf room">WF – MM (sg2)</span></td>
-</tr>
-
-<tr>
-<td>10</td>
-<td class="time" data-start="14:55" data-end="15:40">14:55–15:40</td>
-<td><span class="gr1 subject subject-progra room">pra.str.apk – WJ (39)</span><br>
-<span class="gr2 subject subject-progra room">pra.str.apk – SR (38)</span></td>
-<td><span class="subject subject-biz room">bizn.i zarz. – KG (13)</span></td>
-<td><span class="gr1 subject subject-ang room">j.ang – HM (sj3)</span><br>
-<span class="gr2 subject subject-ang room">j.ang – JP (sj1)</span></td>
-<td><span class="gr1 subject subject-progra room">prac.baz.dan – KJ (39)</span></td>
-<td><span class="subject subject-progra room">str.apk.int – WJ (45)</span></td>
-</tr>
-
-<tr>
-<td>11</td>
-<td class="time" data-start="15:45" data-end="16:30">15:45–16:30</td>
-<td><span class="gr1 subject subject-progra room">pra.str.apk – WJ (39)</span><br>
-<span class="gr2 subject subject-progra room">pra.str.apk – SR (6)</span></td>
-<td></td><td></td>
-<td><span class="gr1 subject subject-progra room">prac.baz.dan – KJ (15)</span></td>
-<td><span class="subject subject-hist room">historia – KK (44)</span></td>
-</tr>
-
-<tr>
-<td>12</td>
-<td class="time" data-start="16:35" data-end="17:20">16:35–17:20</td>
-<td><span class="subject subject-phys room">fizyka – JW (51)</span></td>
-<td></td><td></td><td></td>
-<td><span class="subject subject-hist room">godz.wych – KK (44)</span></td>
-</tr>
-
-<tr>
-<td>13</td>
-<td class="time" data-start="17:25" data-end="18:10">17:25–18:10</td>
-<td><span class="subject subject-db room">syst.bd – PP (52)</span></td>
-<td></td><td></td><td></td>
-<td></td>
-</tr>
-
-</table>
-
-<div class="switcher">
-  <button id="btn-gr1" class="active">Grupa 1</button>
-  <button id="btn-gr2">Grupa 2</button>
-  <button id="btn-theme">🌓 Zmień motyw</button>
-  <button id="btn-print">🖨️ Drukuj</button>
-</div>
-
-<div id="countdown" style="text-align:center; font-size:18px; margin:10px 0;"></div>
-
-
-<footer>
-📌 Obowiązuje od: 15 września 2025
- <p>© 2025 Smygrys. W razie błędów proszę pisać na: <a href="mailto:aikamishop@gmail.com">aikamishop@gmail.com</a></p>
-  <p>Jeżeli chcesz, zaobserwuj mojego GitHub: <a href="https://github.com/Smygrys" target="_blank">https://github.com/Smygrys</a></p>
-  <p>Strona szkoły : <a href="http://zsem.edu.pl" target="_blank">Zsem.edu.pl</a></p>
-</footer>
-
-<script src="script.js"></script>
-</body>
+    <!-- Script JavaScript -->
+    <script src="script.js"></script>
+  </body>
 </html>
-
-

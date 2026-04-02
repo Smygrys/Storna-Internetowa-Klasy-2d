@@ -1,154 +1,185 @@
-// --- Zegar w nagłówku ---
-function updateClock() {
-  const now = new Date();
-  const days = ["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"];
-  const months = ["stycznia","lutego","marca","kwietnia","maja","czerwca",
-                  "lipca","sierpnia","września","października","listopada","grudnia"];
-  
-  const dayName = days[now.getDay()];
-  const day = now.getDate();
-  const month = months[now.getMonth()];
-  const year = now.getFullYear();
-  
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  let seconds = now.getSeconds();
-  
-  hours = hours < 10 ? "0" + hours : hours;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  
-  const timeStr = `${hours}:${minutes}:${seconds}`;
-  const dateStr = `${dayName}, ${day} ${month} ${year}`;
-  
-  const clockEl = document.getElementById("clock");
-  if(clockEl) clockEl.textContent = `${dateStr} ⏰ ${timeStr}`;
-}
-updateClock();
-setInterval(updateClock, 1000);
+// Particles
+(function () {
+  const container = document.getElementById("particles");
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement("div");
+    p.classList.add("particle");
+    const size = Math.random() * 200 + 50;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = Math.random() * 20 + 15 + "s";
+    p.style.animationDelay = Math.random() * 10 + "s";
+    container.appendChild(p);
+  }
+})();
 
+// Typing Animation
+(function () {
+  const phrases = [
+    "Beginner Developer",
+    "Building Websites",
+    "Building Apps",
+    "Building Games",
+    "Learning Every Day",
+    "Future AI Explorer",
+  ];
+  const el = document.getElementById("typingText");
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let speed = 100;
 
-// --- Odliczanie do wakacji ---
-function updateCountdown() {
-  const now = new Date();
-  const vacation = new Date("2026-06-26T00:00:00");
-  const diffMs = vacation - now;
+  function type() {
+    const current = phrases[phraseIndex];
+    if (isDeleting) {
+      el.textContent = current.substring(0, charIndex - 1);
+      charIndex--;
+      speed = 50;
+    } else {
+      el.textContent = current.substring(0, charIndex + 1);
+      charIndex++;
+      speed = 100;
+    }
 
-  const countdownEl = document.getElementById("countdown");
-  if (!countdownEl) return;
+    if (!isDeleting && charIndex === current.length) {
+      speed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      speed = 500;
+    }
 
-  if(diffMs <= 0){
-    countdownEl.textContent = "WAKACJE!!! 🎉";
-    return;
+    setTimeout(type, speed);
+  }
+  type();
+})();
+
+// Navbar scroll
+const navbar = document.getElementById("navbar");
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
   }
 
-  const diffDays = Math.floor(diffMs / (1000*60*60*24));
-  const diffHours = Math.floor((diffMs % (1000*60*60*24)) / (1000*60*60));
-  const diffMinutes = Math.floor((diffMs % (1000*60*60)) / (1000*60));
-  const diffSeconds = Math.floor((diffMs % (1000*60)) / 1000);
+  if (window.scrollY > 500) {
+    backToTop.classList.add("visible");
+  } else {
+    backToTop.classList.remove("visible");
+  }
 
-  countdownEl.textContent =
-    `Do wakacji pozostało: ${diffDays} dni, ${diffHours} godzin, ${diffMinutes} minut, ${diffSeconds} sekund`;
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-
-// --- Podświetlenie aktualnej lekcji ---
-let lessonCountdownInterval = null;
-
-function updateLessonHighlightAndCountdown() {
-  const now = new Date();
-  let found = false;
-
-  // Usuń poprzednie podświetlenia i liczniki
-  document.querySelectorAll("td.current-lesson").forEach(td => td.classList.remove("current-lesson"));
-  document.querySelectorAll(".lesson-countdown").forEach(el => el.remove());
-
-  const dayIndex = now.getDay(); // 0=niedziela,1=poniedziałek,...
-  if(dayIndex < 1 || dayIndex > 5) return; // tylko dni p-pt
-  const colIndex = dayIndex + 1; // tabela: 0=nr,1=godz,2=pon,...
-
-  document.querySelectorAll("td.time").forEach(cell => {
-    const [sH, sM] = cell.dataset.start.split(":").map(Number);
-    const [eH, eM] = cell.dataset.end.split(":").map(Number);
-
-    const startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), sH, sM);
-    const endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), eH, eM);
-
-    if(now >= startDate && now < endDate && !found) {
-      found = true;
-      const row = cell.parentElement;
-      const subjectCell = row.children[colIndex];
-
-      if(subjectCell && subjectCell.textContent.trim() !== "") {
-        subjectCell.classList.add("current-lesson");
-
-        const countdownSpan = document.createElement("div");
-        countdownSpan.className = "lesson-countdown";
-        countdownSpan.setAttribute("data-end-ts", endDate.getTime());
-        subjectCell.appendChild(countdownSpan);
-
-        if(lessonCountdownInterval) clearInterval(lessonCountdownInterval);
-
-        lessonCountdownInterval = setInterval(() => {
-          const now2 = new Date();
-          const endTs = Number(countdownSpan.getAttribute("data-end-ts"));
-          const secsLeft = Math.max(0, Math.floor((endTs - now2.getTime()) / 1000));
-          countdownSpan.textContent = `⏳ ${Math.floor(secsLeft/60)}m ${secsLeft%60}s`;
-          if(secsLeft <= 0){
-            clearInterval(lessonCountdownInterval);
-            lessonCountdownInterval = null;
-            updateLessonHighlightAndCountdown();
-          }
-        }, 1000);
-      }
+  // Active nav link
+  const sections = document.querySelectorAll("section[id]");
+  let current = "";
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute("id");
     }
   });
+  document.querySelectorAll(".nav-links a").forEach((a) => {
+    a.classList.remove("active");
+    if (a.getAttribute("href") === "#" + current) {
+      a.classList.add("active");
+    }
+  });
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Hamburger menu
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+  });
+});
+
+// Theme toggle
+const themeToggle = document.getElementById("themeToggle");
+const html = document.documentElement;
+
+function setTheme(theme) {
+  html.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+  const icon = themeToggle.querySelector("i");
+  icon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
 }
-updateLessonHighlightAndCountdown();
-setInterval(updateLessonHighlightAndCountdown, 10000);
 
+const savedTheme = localStorage.getItem("theme") || "dark";
+setTheme(savedTheme);
 
-// --- Przełączanie grup ---
-document.getElementById("btn-gr1").addEventListener("click", () => {
-  document.body.classList.remove("gr2-active");
-  document.getElementById("btn-gr1").classList.add("active");
-  document.getElementById("btn-gr2").classList.remove("active");
-});
-
-document.getElementById("btn-gr2").addEventListener("click", () => {
-  document.body.classList.add("gr2-active");
-  document.getElementById("btn-gr2").classList.add("active");
-  document.getElementById("btn-gr1").classList.remove("active");
-});
-
-// --- Drukowanie ---
-document.getElementById("btn-print").addEventListener("click", () => {
-  window.print();
-});
-
-// --- Theme changer ---
-const themeToggleBtn = document.getElementById("btn-theme");
-
-function applyTheme(theme) {
-  if(theme === "dark") {
-    document.body.classList.add("dark-theme");
+themeToggle.addEventListener("click", () => {
+  const current = html.getAttribute("data-theme");
+  if (current === "dark") {
+    const confirmed = confirm("Don't be gay. Don't click this.");
+    if (confirmed) {
+      setTheme("light");
+    }
   } else {
-    document.body.classList.remove("dark-theme");
-  }
-}
-
-themeToggleBtn.addEventListener("click", () => {
-  if(document.body.classList.contains("dark-theme")) {
-    applyTheme("light");
-    localStorage.setItem("theme", "light");
-  } else {
-    applyTheme("dark");
-    localStorage.setItem("theme", "dark");
+    setTheme("dark");
   }
 });
 
-// Load saved theme
-const savedTheme = localStorage.getItem("theme") || "light";
-applyTheme(savedTheme);
+// Intersection Observer for animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.getAttribute("data-delay") || 0;
+      setTimeout(() => {
+        entry.target.classList.add("visible");
+      }, parseInt(delay));
+
+      // Animate skill bars
+      const skillBars = entry.target.querySelectorAll(".skill-progress");
+      skillBars.forEach((bar) => {
+        const width = bar.getAttribute("data-width");
+        setTimeout(
+          () => {
+            bar.style.width = width + "%";
+          },
+          parseInt(delay) + 300,
+        );
+      });
+
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document
+  .querySelectorAll(".fade-in, .fade-in-left, .fade-in-right")
+  .forEach((el) => {
+    observer.observe(el);
+  });
+
+// Contact form
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  this.reset();
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3500);
+});
